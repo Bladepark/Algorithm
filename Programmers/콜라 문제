@@ -1,0 +1,18 @@
+class Solution {
+    fun solution(food: IntArray): String {
+        var answer: String = ""
+        var numArr = food.slice(1..food.size-1).map{it/2}
+        var foodList = mutableListOf<Int>()
+        
+        for(i in numArr.indices) {
+            for(j in 0 until numArr[i]) {
+                if(numArr[i] != 0) {
+                    foodList.add(i+1)
+                }
+            }
+        }
+        
+        answer = foodList.joinToString("") + '0' + foodList.reversed().joinToString("")
+        return answer
+    }
+}
