@@ -1,0 +1,24 @@
+class Solution {
+    fun solution(k: Int, score: IntArray): IntArray {
+        var answer: IntArray = intArrayOf()
+        var legendSinger = mutableListOf<Int>()
+        var result = mutableListOf<Int>()
+        var dangerLegend = 0
+        
+        score.map {
+            if(legendSinger.size < k) {
+                legendSinger.add(it)
+            }
+            else {
+                if(it > dangerLegend) {
+                    legendSinger.remove(dangerLegend)
+                    legendSinger.add(it)
+                }
+            }
+            dangerLegend = legendSinger.minOf{it}
+            result += dangerLegend
+        }
+        answer = result.toIntArray()
+        return answer
+    }
+}
