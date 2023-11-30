@@ -1,0 +1,24 @@
+class Solution {
+    fun solution(a: Int, b: Int): String {
+        var answer = ""
+        var totalDay:Int = b
+        
+        for(month in 1 until a) {
+            when(month) {
+                1,3,5,7,8,10,12 -> totalDay += 31
+                2 -> totalDay += 29
+                4,6,9,11 -> totalDay += 30
+            }
+        }
+        when(totalDay % 7) {
+            1 -> answer = "FRI"
+            2 -> answer = "SAT"
+            3 -> answer = "SUN"
+            4 -> answer = "MON"
+            5 -> answer = "TUE"
+            6 -> answer = "WED"
+            else -> answer = "THU"
+        }
+        return answer
+    }
+}
