@@ -1,0 +1,14 @@
+class Solution {
+    fun solution(k: Int, m: Int, score: IntArray): Int {
+        var answer: Int = 0
+        score.sortDescending()
+        var lastNum = 0
+        score.forEach{
+            lastNum++
+            if(lastNum%m == 0){
+               answer+= it*m
+            }
+        }
+        return answer
+    }
+}
