@@ -1,0 +1,19 @@
+class Solution {
+    fun solution(n: Int, m: Int, section: IntArray): Int {
+        var answer: Int = 0
+        var max = 0
+        if(m == 1) {
+            answer = section.size
+        }
+        else {
+            for(i in 0 until section.size){
+                if(section[i] < max){
+                    continue
+                }
+                answer++
+                max = section[i] + m
+            }
+        }
+        return answer
+    }
+}
