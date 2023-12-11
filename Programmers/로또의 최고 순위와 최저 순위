@@ -1,0 +1,38 @@
+class Solution {
+    fun solution(lottos: IntArray, win_nums: IntArray): IntArray {
+        var answer: IntArray = intArrayOf()
+        var countA = 0
+        var countB = 0
+        var bestRank = 0
+        var worstRank = 0
+        lottos.map {
+            if(win_nums.contains(it)) {
+                countA++
+            }
+            if(it == 0) {
+                countB++
+            }
+        }
+        when(countA){
+            6 -> worstRank = 1
+            5 -> worstRank = 2
+            4 -> worstRank = 3
+            3 -> worstRank = 4
+            2 -> worstRank = 5
+            1 -> worstRank = 6
+            0 -> worstRank = 6
+        }
+        when(countA  + countB){
+            6 -> bestRank = 1
+            5 -> bestRank = 2
+            4 -> bestRank = 3
+            3 -> bestRank = 4
+            2 -> bestRank = 5
+            1 -> bestRank = 6
+            0 -> bestRank = 6
+        }
+        answer += bestRank
+        answer += worstRank
+        return answer
+    }
+}
