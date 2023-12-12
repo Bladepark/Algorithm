@@ -1,0 +1,9 @@
+class Solution {
+    fun solution(babbling: Array<String>): Int {
+        var answer: Int = 0
+        var regexA = "aya|ye|woo|ma".toRegex()
+        var regexB = "ayaaya|yeye|woowoo|mama".toRegex()
+        answer = babbling.map{it.replace(regexB,"x")}.map{it.replace(regexA,"")}.count{it.isEmpty()}
+        return answer
+    }
+}
