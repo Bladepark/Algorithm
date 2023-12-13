@@ -1,0 +1,16 @@
+import kotlin.math.min
+
+class Solution {
+    fun solution(X: String, Y: String): String {
+        var answer: String = ""
+        val charList = listOf("9","8","7","6","5","4","3","2","1","0")
+
+        for (ch in charList) {
+            answer += ch.repeat(min(X.count { it.toString() == ch }, Y.count { it.toString() == ch }))
+        }
+        if (answer.isEmpty()) answer = "-1"
+        if (answer.toList().distinct() == listOf('0')) answer = "0"
+
+        return answer
+    }
+}
