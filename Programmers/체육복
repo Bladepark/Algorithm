@@ -1,0 +1,32 @@
+class Solution {
+    fun solution(n: Int, lost: IntArray, reserve: IntArray): Int {
+        var answer = 0
+        var rent = reserve.toMutableList()
+        var need = lost.toMutableList()
+        var count = 0
+        lost.map {
+            if (reserve.contains(it)) {
+                rent.remove(it)
+                need.remove(it)
+            }
+        }
+        need.sort()
+        for (i in need) {
+            if (rent.contains(i - 1)) {
+                count++
+                rent.remove(i - 1)
+                continue
+            }
+            else if (rent.contains(i + 1)) {
+                count++
+                rent.remove(i + 1)
+                continue
+            }
+            else {
+                continue
+            }
+        }
+        answer = n - need.size + count 
+        return answer
+    }
+}
