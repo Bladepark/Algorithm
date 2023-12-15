@@ -1,0 +1,25 @@
+class Solution {
+    fun solution(s: String): Int {
+        var firstChar = s[0]
+        var countA = 0
+        var countB = 0
+        var result = 0
+        var reset = false
+
+        s.forEachIndexed { index, char ->
+            if (reset) {
+                firstChar = char
+                reset = false
+            }
+
+            if (char == firstChar) countA ++
+            if (char != firstChar) countB ++
+
+            if (countA == countB || index == s.lastIndex) {
+                result += 1
+                reset = true
+            }
+        }
+        return result
+    }
+}
