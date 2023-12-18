@@ -1,0 +1,16 @@
+class Solution {
+    fun solution(keymap: Array<String>, targets: Array<String>): IntArray {
+        var answer: IntArray = intArrayOf()
+        // ["ABACD", "BCEFD"]	["ABCD","AABB"]	[9, 4]
+        answer = targets.map { str ->
+                    str.map { char -> keymap.map { it.indexOf(char) + 1 }
+                        .filterNot {it < 1}
+                        .let { list ->
+                            if(list.isEmpty()) -1
+                            else list.minOf { it }
+                            }
+                    }.let{ if(it.contains(-1)) -1 else it.sum() }
+                }.toIntArray()
+        return answer
+    }
+}
