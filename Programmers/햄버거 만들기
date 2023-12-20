@@ -1,0 +1,15 @@
+class Solution {
+    fun solution(ingredient: IntArray): Int {
+        var answer: Int = 0
+        var stack = mutableListOf<Int>()
+        
+        for (i in ingredient) {
+            stack.add(i)
+            if ( stack.size >= 4 && stack.slice(stack.size-4 until stack.size) == listOf(1,2,3,1) ) {
+                repeat(4) {stack.removeLast()}
+                answer++
+            }
+        }
+        return answer
+    }
+}
